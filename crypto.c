@@ -40,7 +40,7 @@ void encode_string(const char string[], bool bytes[strlen(string)+1][8]){
     for (int i = 0; i < length; i++) {
         result[i] = text[length - i - 1];
     }
-    result[length] = '\0'; 
+    result[length] = '\n'; 
     
 }
 
