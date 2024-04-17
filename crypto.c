@@ -33,6 +33,18 @@ void encode_string(const char string[], bool bytes[strlen(string)+1][8]){
         encode_char(string[i], bits);
           
     }
+}
+//
+    void reverse(const char* text, char* result){
+        int length = strlen(text);
+    for (int i = 0; i < length; i++) {
+        result[i] = text[length - i - 1];
+    }
+    result[length] = '\0'; 
+    
+}
+
+        
     
 
 
@@ -41,4 +53,3 @@ void encode_string(const char string[], bool bytes[strlen(string)+1][8]){
 
 
 
-}

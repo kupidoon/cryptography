@@ -67,7 +67,18 @@ printf("%s\n", string);
 // prints: Hello!
 
 
+	char reversed[255];
+reverse("Hello world!", reversed);
+printf("%s\n", reversed);
+// "!DLROW OLLEH"
+
 	
 	
-	return 0;
+    
+    
+    
+    
+    
+    
+    return 0;
 }
