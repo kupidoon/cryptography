@@ -72,7 +72,17 @@ reverse("Hello world!", reversed);
 printf("%s\n", reversed);
 // "!DLROW OLLEH"
 
-	
+	char encrypted[255];
+char decrypted[255];
+
+// basic test with long text
+vigenere_encrypt("CoMPuTeR", "Hello world!", encrypted);
+printf("%s\n", encrypted);
+// "JSXAI PSINR!"
+vigenere_decrypt("CoMPuTeR", encrypted, decrypted);
+printf("%s\n", decrypted);
+// "HELLO WORLD!"
+
 	
     
     
