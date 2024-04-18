@@ -78,8 +78,11 @@ void vigenere_encrypt(const char* key, const char* text, char* result) {
 //
 void vigenere_decrypt(const char* key, const char* text, char* result){
     int textLenght=strlen(text);
-    
+    int keyLenght=strlen(key);
     for (int i = 0, j = 0; i < textLenght; i++, j++){
+        if(j>=keyLenght){
+            j=0;
+        }
         char textSymbol = text[i];
         if (textSymbol >= 97 && textSymbol <= 122) {
             textSymbol -= 32; 
@@ -95,6 +98,14 @@ void vigenere_decrypt(const char* key, const char* text, char* result){
         if (keySymbol >= 97 && keySymbol <= 122) {
             keySymbol -= 32; 
         }
+        int shift = (int)keySymbol - 65;
+        char tmp = textSymbol - shift;
+    
+    if (tmp < 65) {
+            tmp += 26; 
+        }
+        result[i] = tmp;
+        
     }
 
 }
