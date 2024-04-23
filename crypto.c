@@ -109,6 +109,14 @@ void vigenere_decrypt(const char* key, const char* text, char* result){
     }
 
 }
+void bit_encrypt(const char* text, char* result){
+    int binar[8];
+    for(int j=0;j<strlen(text);j++ ){
+    for(int i=0;i<8;i++){
+
+    }
+    }
+}
 
         
     
