@@ -17,10 +17,10 @@ void encode_char(const char character, bool bits[8]){
 //
 char decode_char(const bool bits[8]){
     int Value=0;
-    int bit_valuels[8] = {128, 64 ,32 ,16 ,8 ,4 ,2 ,1};
+    int bit_values[8] = {128, 64 ,32 ,16 ,8 ,4 ,2 ,1};
     for(int i=0;i<8;i++){
         if(bits[i]>0){
-            Value+=bit_valuels[i];
+            Value+=bit_values[i];
         
         }
     }
@@ -111,9 +111,11 @@ void vigenere_decrypt(const char* key, const char* text, char* result){
 }
 void bit_encrypt(const char* text, char* result){
     bool bits[8];
+    bool bit[8];
     int bitss[4];
     int bitsss[4];
     int smena[4];
+    int proverkaXOR[4];
     for(int i=0;i<strlen(text);i++){
         encode_char(text[i], bits);
         
@@ -132,8 +134,20 @@ void bit_encrypt(const char* text, char* result){
         bitss[2]=smena[3];
         bitss[3]=smena[2];
         for(int i=0;i<4;i++){
-            
+            if(bitss[i]==bitsss[i]){
+                proverkaXOR[i]=0;
+            }else{
+                proverkaXOR[i]=1;
+            }
         }
+        for(int i=0;i<4;i++){
+            bit[i]=bitss[i];
+        }
+        for(int i=4, k=0;i<8;i++, k++){
+            bit[i]=proverkaXOR[k];
+        }
+        
+        result[i]=decode_char(bit);
     }
    
    for(int i=0;i<4;i++){
@@ -144,7 +158,16 @@ void bit_encrypt(const char* text, char* result){
     printf("%d", bitsss[i]);
     }
     printf("\n");
+    for(int i=0;i<4;i++){
+    printf("%d", proverkaXOR[i]);
+   } 
+    printf("\n");
+    for(int i=0;i<8;i++){
+    printf("%d", bit[i]);
+    }
+    printf("\n");
 }
+
 
         
     

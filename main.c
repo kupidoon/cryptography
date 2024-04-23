@@ -88,7 +88,7 @@ char encryptedd[100];
 // basic test with long text
 bit_encrypt("Hello world!", encryptedd);
 for(int i=0; i < 12;i++) {
-    printf("%x ", encrypted[i]);
+    printf("%02x ", (unsigned char)encryptedd[i]);
     //80 9c 95 95 96 11 bc 96 b9 95 9d 10
 }
 
