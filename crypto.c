@@ -110,12 +110,40 @@ void vigenere_decrypt(const char* key, const char* text, char* result){
 
 }
 void bit_encrypt(const char* text, char* result){
-    int binar[8];
-    for(int j=0;j<strlen(text);j++ ){
-    for(int i=0;i<8;i++){
-
+    bool bits[8];
+    int bitss[4];
+    int bitsss[4];
+    int smena[4];
+    for(int i=0;i<strlen(text);i++){
+        encode_char(text[i], bits);
+        
+        for(int k=0;k<4;k++){
+            bitss[k]=bits[k];  
+        }
+        for(int k=0, i=4;k<4;k++, i++){   
+            bitsss[k]=bits[i];  
+        }
+        for(int k=0;k<4;k++){
+            smena[k]=bitss[k];  
+            
+        }
+        bitss[0]=smena[1];
+        bitss[1]=smena[0];
+        bitss[2]=smena[3];
+        bitss[3]=smena[2];
+        for(int i=0;i<4;i++){
+            
+        }
     }
+   
+   for(int i=0;i<4;i++){
+    printf("%d", bitss[i]);
+   } 
+    printf("\n");
+    for(int i=0;i<4;i++){
+    printf("%d", bitsss[i]);
     }
+    printf("\n");
 }
 
         
