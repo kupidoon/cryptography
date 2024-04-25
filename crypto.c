@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 //
-void encode_char(const char character, bool bits[8]){
+void encode_char(const unsigned char character, bool bits[8]){
     int bit_valuels[8] = {128, 64 ,32 ,16 ,8 ,4 ,2 ,1};
     int CharValue = (int)character;
     for(int i=0;i<8;i++){
@@ -15,7 +15,7 @@ void encode_char(const char character, bool bits[8]){
     }
 }
 //
-char decode_char(const bool bits[8]){
+unsigned char decode_char(const bool bits[8]){
     int Value=0;
     int bit_values[8] = {128, 64 ,32 ,16 ,8 ,4 ,2 ,1};
     for(int i=0;i<8;i++){
@@ -109,7 +109,7 @@ void vigenere_decrypt(const char* key, const char* text, char* result){
     }
 
 }
-void bit_encrypt(const char* text, char* result){
+void bit_encrypt(const char* text, unsigned char* result){
     bool bits[8];
     bool bit[8];
     int bitss[4];
@@ -167,7 +167,12 @@ void bit_encrypt(const char* text, char* result){
     }
     printf("\n");
 }
-
+//
+void bit_decrypt(const unsigned char* text, unsigned char* result){
+    for(int i=0;i<strlen(text);i++){
+        
+    }
+}
 
         
     

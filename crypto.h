@@ -11,7 +11,7 @@ void vigenere_decrypt(const char* key, const char* text, char* result);
 
 void encode_char(const char character, bool bits[8]);
 
-char decode_char(const bool bits[8]);
+unsigned char decode_char(const bool bits[8]);
 
 void encode_string(const char string[], bool bytes[][8]);
 

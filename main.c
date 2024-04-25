@@ -91,6 +91,10 @@ for(int i=0; i < 12;i++) {
     printf("%02x ", (unsigned char)encryptedd[i]);
     //80 9c 95 95 96 11 bc 96 b9 95 9d 10
 }
+char decrypted1[100];
+bit_decrypt(encryptedd, decrypted1);
+printf("%s\n", decrypted1);
+
 
 
 	
