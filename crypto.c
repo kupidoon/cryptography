@@ -12,7 +12,9 @@ void encode_char(const unsigned char character, bool bits[8]){
         bits[i]=1;
         CharValue -=bit_valuels[i];
         }
+    
     }
+
 }
 //
 unsigned char decode_char(const bool bits[8]){
@@ -34,20 +36,20 @@ void encode_string( char string[], bool bytes[][8]) {
     }
 }
 //
-void decode_string( int rows, bool bytes[][8], char string[]) {
-    int bit_values[8] = {128, 64, 32, 16, 8, 4, 2, 1};
-    int charValue = 0;
+// void decode_string( int rows,  bool bytes[][8], unsigned char string[]) {
+//     int bit_values[8] = {128, 64, 32, 16, 8, 4, 2, 1};
+//     int charValue = 0;
 
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < 8; j++) {
-            if(bytes[i][j] == 1) {
-                charValue += bit_values[j];
-            }
-        }
-        string[i] = charValue;
-        charValue = 0;
-    }
-}
+//     for(int i = 0; i < rows; i++) {
+//         for(int j = 0; j < 8; j++) {
+//             if(bytes[i][j] == 1) {
+//                 charValue += bit_values[j];
+//             }
+//         }
+//         string[i] = charValue;
+//         charValue = 0;
+//     }
+// }
 //
 
     void reverse(const char* text, char* result){
@@ -88,42 +90,43 @@ void vigenere_encrypt(const char* key, const char* text, char* result) {
         }
         result[i] = tmp;
     }
+    result[strlen(text)]='\0';
 }
 
 //
-void vigenere_decrypt(const char* key, const char* text, char* result){
-    int textLenght=strlen(text);
-    int keyLenght=strlen(key);
-    for (int i = 0, j = 0; i < textLenght; i++, j++){
-        if(j>=keyLenght){
-            j=0;
-        }
-        char textSymbol = text[i];
-        if (textSymbol >= 97 && textSymbol <= 122) {
-            textSymbol -= 32; 
-        }
+// void vigenere_decrypt(const char* key, const char* text, char* result){
+//     int textLenght=strlen(text);
+//     int keyLenght=strlen(key);
+//     for (int i = 0, j = 0; i < textLenght; i++, j++){
+//         if(j>=keyLenght){
+//             j=0;
+//         }
+//         char textSymbol = text[i];
+//         if (textSymbol >= 97 && textSymbol <= 122) {
+//             textSymbol -= 32; 
+//         }
         
-        if (!(textSymbol >= 65 && textSymbol <= 90)) {
-            j--;
-            result[i] = textSymbol;
-            continue;
-        }
+//         if (!(textSymbol >= 65 && textSymbol <= 90)) {
+//             j--;
+//             result[i] = textSymbol;
+//             continue;
+//         }
     
-    char keySymbol = key[j];
-        if (keySymbol >= 97 && keySymbol <= 122) {
-            keySymbol -= 32; 
-        }
-        int shift = (int)keySymbol - 65;
-        char tmp = textSymbol - shift;
+//     char keySymbol = key[j];
+//         if (keySymbol >= 97 && keySymbol <= 122) {
+//             keySymbol -= 32; 
+//         }
+//         int shift = (int)keySymbol - 65;
+//         char tmp = textSymbol - shift;
     
-    if (tmp < 65) {
-            tmp += 26; 
-        }
-        result[i] = tmp;
+//     if (tmp < 65) {
+//             tmp += 26; 
+//         }
+//         result[i] = tmp;
         
-    }
+//     }
 
-}
+// }
 void bit_encrypt(const char* text, unsigned char* result){
     bool bits[8];
     bool bit[8];
@@ -164,36 +167,57 @@ void bit_encrypt(const char* text, unsigned char* result){
         
         result[i]=decode_char(bit);
     }
+   result[strlen(text)]='\0';
    
-   for(int i=0;i<4;i++){
-    printf("%d", bitss[i]);
-   } 
-    printf("\n");
-    for(int i=0;i<4;i++){
-    printf("%d", bitsss[i]);
-    }
-    printf("\n");
-    for(int i=0;i<4;i++){
-    printf("%d", proverkaXOR[i]);
-   } 
-    printf("\n");
-    for(int i=0;i<8;i++){
-    printf("%d", bit[i]);
-    }
-    printf("\n");
 }
 //
-void bit_decrypt(const  char* text, unsigned char* result){
-   bool bits[8];
-   int len=strlen(text);
-    for(int i=0;i<len;i++){
-       encode_char(text[i], bits);
+// void bit_decrypt(const  char* text, unsigned char* result){
+//    bool bits[8];
+//    bool bit[8];
+//     int bitss[4];
+//     int bitsss[4];
+//     int smena[4];
+//     int proverkaXOR[4];
+//    int len=strlen(text);
+//    printf("\n");
+//     for(int i=0;i<len;i++){
+//        encode_char(text[i], bits);
+//         printf("\n");
+//     for(int k=0;k<4;k++){
+//             bitss[k]=bits[k];  
+//         }
+//         for(int k=0, i=4;k<4;k++, i++){   
+//             bitsss[k]=bits[i];  
+//         }
+//         for(int k=0;k<4;k++){
+//             smena[k]=bitss[k];  
+            
+//         }
+//         for(int i=0;i<4;i++){
+//             if(bitss[i]==bitsss[i]){
+//                 proverkaXOR[i]=0;
+//             }else{
+//                 proverkaXOR[i]=1;
+//             }
+//         }
+//         bitss[0]=smena[1];
+//         bitss[1]=smena[0];
+//         bitss[2]=smena[3];
+//         bitss[3]=smena[2];
+//         for(int i=0;i<4;i++){
+//             bit[i]=bitss[i];
+//         }
+//         for(int i=4, k=0;i<8;i++, k++){
+//             bit[i]=proverkaXOR[k];
+//         }
         
+//         result[i]=decode_char(bit);
 
-        
-    }
+//     }
+//     result[strlen(text)]='\0';
+//     }
+    
 
-}
 
         
     
