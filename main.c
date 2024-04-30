@@ -6,37 +6,40 @@
 
  int main ()
  {
-	char Tixt[1000];
+	char key[1000];
+    char Tixt[1000];
     int vubor;
         printf("1.Закодувати символ\n");
         printf("2.Закодувати строку\n");
         printf("3.Реверс\n");
         printf("4.Віженер\n");
         printf("5.Бітовий хаос\n");
-        printf("6.Роздекодить символ\n");
-        printf("7.Роздекодить строку\n");
+        
         
 
     scanf("%i", &vubor);
+    char c;
+    scanf("%c", &c);
     fgets(Tixt, 1000 , stdin);
-    printf("%i", vubor);
+    
     printf("\n");
+
 if(vubor==1){
 bool bits1[8];
-encode_char('A', bits1);
+encode_char(Tixt[0], bits1);
 for(int i = 0; i < 8; i++){
     printf("%d", bits1[i]);
 }
 printf("\n");
 // prints: 01000001
 }
-	if(vubor==6){
-    bool bits2[8] = {0,1,0,0,0,0,0,1};
-printf("%c\n", decode_char(bits2));
-// prints: A
-    }
+// 	if(vubor==6){
+//     bool bits2[8] = {0,1,0,0,0,0,0,1};
+// printf("%c\n", decode_char(bits2));
+// // prints: A
+//     }
 if(vubor==2){
-char* text = "Hello, how are you?";
+char* text = Tixt;
 const int len = strlen(text);
 bool bytes1[len+1][8];
 encode_string(text, bytes1);
@@ -79,23 +82,26 @@ for(int j = 0; j <= len; j++){
 //     {0,0,0,0,0,0,0,0}
 // };
 }
-// if(vubor==7){
+
 // char string[7];
 // decode_string(7, bytes1, string);
 // printf("%s\n", string);
 // // prints: Hello!
-// }
+
 if(vubor==3){
 	char reversed[255];
-reverse("Hello world!", reversed);
+reverse(Tixt, reversed);
 printf("%s\n", reversed);
 // "!DLROW OLLEH"
 }
 	char encrypted[255];
 // char decrypted[255];
 if(vubor==4){
-// basic test with long text
-vigenere_encrypt("CoMPuTeR", "Hello world!", encrypted);
+
+
+    fgets(key, 1000 , stdin);
+
+vigenere_encrypt(key, Tixt, encrypted);
 printf("%s\n", encrypted);
 // "JSXAI PSINR!"
 }
@@ -107,7 +113,7 @@ unsigned char encryptedd[100];
 
 // 
 if(vubor==5){
-bit_encrypt("Hello world!", encryptedd);
+bit_encrypt(Tixt, encryptedd);
 for(int i=0; i < 12;i++) {
     printf("%02x ", (unsigned char)encryptedd[i]);
     //80 9c 95 95 96 11 bc 96 b9 95 9d 10
