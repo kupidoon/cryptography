@@ -27,14 +27,29 @@ unsigned char decode_char(const bool bits[8]){
     return Value;
 }
 //
-void encode_string(const char string[], bool bytes[strlen(string)+1][8]){
-    bool bits[8];
-    for(int i=0;i<strlen(string);i++){
-        encode_char(string[i], bits);
-          
+void encode_string( char string[], bool bytes[][8]) {
+    int length = strlen(string);
+    for (int i = 0; i < length; i++) {
+        encode_char(string[i], bytes[i]);
     }
 }
 //
+void decode_string( int rows, bool bytes[][8], char string[]) {
+    int bit_values[8] = {128, 64, 32, 16, 8, 4, 2, 1};
+    int charValue = 0;
+
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < 8; j++) {
+            if(bytes[i][j] == 1) {
+                charValue += bit_values[j];
+            }
+        }
+        string[i] = charValue;
+        charValue = 0;
+    }
+}
+//
+
     void reverse(const char* text, char* result){
         int length = strlen(text);
     for (int i = 0; i < length; i++) {
@@ -168,10 +183,16 @@ void bit_encrypt(const char* text, unsigned char* result){
     printf("\n");
 }
 //
-void bit_decrypt(const unsigned char* text, unsigned char* result){
-    for(int i=0;i<strlen(text);i++){
+void bit_decrypt(const  char* text, unsigned char* result){
+   bool bits[8];
+   int len=strlen(text);
+    for(int i=0;i<len;i++){
+       encode_char(text[i], bits);
+        
+
         
     }
+
 }
 
         
