@@ -57,7 +57,7 @@ void encode_string( char string[], bool bytes[][8]) {
     for (int i = 0; i < length; i++) {
         result[i] = text[length - i - 1];
     }
-    result[length] = '\n'; 
+    result[length]='\0'; 
     
 }
 //
