@@ -217,6 +217,65 @@ void bit_encrypt(const char* text, unsigned char* result){
 //     result[strlen(text)]='\0';
 //     }
     // s
+    void stas_encrypt(const char* text, unsigned char* result){
+        bool bits[8];
+    bool bit[8];
+    int bitss[4];
+    int bitsss[4];
+    int smena[4];
+    
+    for(int i=0;i<strlen(text);i++){
+        encode_char(text[i], bits);
+        
+        for(int k=0;k<4;k++){
+            bitss[k]=bits[k];  
+        }
+        for(int k=0, i=4;k<4;k++, i++){   
+            bitsss[k]=bits[i];  
+        }
+        for(int k=0;k<4;k++){
+            smena[k]=bitss[k];  
+            
+        }
+        bitss[0]=smena[1];
+        bitss[1]=smena[0];
+        bitss[2]=smena[3];
+        bitss[3]=smena[2];
+        for(int k=0;k<4;k++){
+            if(bitss[k]==0){
+                bitss[k]=1;
+            }else{
+                bitss[k]=0;
+            }
+        }
+        for(int i=0;i<4;i++){
+            bit[i]=bitss[i];
+        }
+        for(int k=0;k<4;k++){
+            smena[k]=bitsss[k];  
+            
+        }
+        bitsss[0]=smena[1];
+        bitsss[1]=smena[0];
+        bitsss[2]=smena[3];
+        bitsss[3]=smena[2];
+        for(int k=0;k<4;k++){
+            if(bitsss[k]==0){
+                bitsss[k]=1;
+            }else{
+                bitsss[k]=0;
+            }
+        }
+        for(int i=4, k=0;i<8;i++, k++){
+            bit[i]=bitsss[k];
+        }
+        
+        
+        result[i]=decode_char(bit);
+    }
+   result[strlen(text)]='\0';
+   
+    }
 
 
         

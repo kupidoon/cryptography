@@ -14,7 +14,7 @@
         printf("3.Реверс\n");
         printf("4.Віженер\n");
         printf("5.Бітовий хаос\n");
-        
+        printf("6.Стасовий хаос\n");
         
 
     scanf("%i", &vubor);
@@ -122,9 +122,13 @@ for(int i=0; i < 12;i++) {
 // unsigned char decrypted1[100];
 // bit_decrypt(encryptedd, decrypted1);
 // printf("%s\n", decrypted1);
-
-
-
+if(vubor==6){
+stas_encrypt(Tixt, encryptedd);
+for(int i=0; i < 12;i++) {
+    printf("%02x ", (unsigned char)encryptedd[i]);
+    
+}
+}
 	
     
     
