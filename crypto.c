@@ -216,7 +216,7 @@ void bit_encrypt(const char* text, unsigned char* result){
 //     }
 //     result[strlen(text)]='\0';
 //     }
-    
+    // s
 
 
         
